@@ -1,19 +1,18 @@
-# #!/bin/bash
+#!/bin/bash
 
 DATABASE="./data/player.csv"
 STATIC_SALT="Salt123"  # static salt untuk hashing password
 
-# parameter register
-if [ "$#" -ne 3 ]; then
-    echo "Usage: $0 <email> <username> <password>"
-    exit 1
-fi
+# Meminta input dari pengguna
+echo -n "Masukkan email: "
+read EMAIL
+echo -n "Masukkan nama: "
+read USERNAME
+echo -n "Masukkan password: "
+read -s PASSWORD  # Input password secara tersembunyi
+echo ""
 
-EMAIL="$1"
-USERNAME="$2"
-PASSWORD="$3"
-
-# validasi email
+# Validasi email
 if ! [[ "$EMAIL" =~ ^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$ ]]; then
     echo "ERROR: Format email tidak valid!"
     exit 1
@@ -24,7 +23,7 @@ if grep -q "^$EMAIL," "$DATABASE"; then
     exit 1
 fi
 
-# validasi password
+# Validasi password
 if [[ "${#PASSWORD}" -lt 8 ]]; then
     echo "ERROR: Password harus memiliki minimal 8 karakter!" 
     exit 1
@@ -42,10 +41,9 @@ if ! [[ "$PASSWORD" =~ [0-9] ]]; then
     exit 1
 fi
 
-
-# hashing password dengan SHA-256 dan static salt
+# Hashing password dengan SHA-256 dan static salt
 HASHED_PASSWORD=$(echo -n "$PASSWORD$STATIC_SALT" | sha256sum | awk '{print $1}')
 
-# menyimpan data ke database
+# Menyimpan data ke database
 echo "$EMAIL,$USERNAME,$HASHED_PASSWORD" >> "$DATABASE"
 echo "User berhasil didaftarkan!"
