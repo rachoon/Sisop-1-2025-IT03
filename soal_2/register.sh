@@ -46,6 +46,6 @@ fi
 # hashing password dengan SHA-256 dan static salt
 HASHED_PASSWORD=$(echo -n "$PASSWORD$STATIC_SALT" | sha256sum | awk '{print $1}')
 
-# simpan data ke database
+# menyimpan data ke database
 echo "$EMAIL,$USERNAME,$HASHED_PASSWORD" >> "$DATABASE"
 echo "User berhasil didaftarkan!"
