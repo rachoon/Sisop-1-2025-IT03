@@ -225,21 +225,21 @@ fi
 
 for arg in "$@"; do
     case "$arg" in
-        --play="Speak to Me")
+        (--play="Speak to Me")
             speak_to_me
             ;;
-        --play="On the Run")
+        (--play="On the Run")
             on_the_run
             ;;
-        --play="Time")
+        (--play="Time")
             Time
             ;;
-        --play="Money")
+        (--play="Money")
             Money
             ;;
-        --play="Brain Damage")
+        (--play="Brain Damage")
             Brain_Damage
-        *)
+        (*)
             echo "Program tidak dikenal: $arg"
             exit 1
             ;;
