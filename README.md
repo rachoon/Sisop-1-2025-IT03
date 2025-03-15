@@ -25,7 +25,7 @@ read nama
 awk -F',' -v name="$nama" '$2 == name {count++} END {print name " membaca " count " buku."}' reading_data.csv
 ```
 <p>dan nanti outputnya akan seperti ini</p>
-<img src="source/Screenshot 2025-03-15 120223.png">
+<img src="https://github.com/user-attachments/assets/f84e6dd1-c176-4c73-a141-238e3063629e">
 <p>
   1.b) pada soal ini kita diminta untuk mencari berapa rata rata lama waktu untuk membaca pada berbagai 
   jenis device. dari sini kita dari sini kita bisa memanfaatkan `awk` untuk mencari jumlah tersebut:
@@ -37,7 +37,7 @@ awk -F',' -v dev="$device" '$8 == dev {sum += $6; count++} END {if (count > 0) p
 ```
 
 <p>nanti outputnya akan seperti ini</p>
-<img src="source/Screenshot 2025-03-15 121621.png">
+<img src="https://github.com/user-attachments/assets/1481a6eb-71c4-49a2-b01d-9af3236301b8">
 
 <p>
   1.c) pada soal ini kita diminta untuk mencari pembaca dengan ratting tertinggi disertai dengan nama, judul buku dan nilai ratting nya.
@@ -48,7 +48,7 @@ awk -F',' -v dev="$device" '$8 == dev {sum += $6; count++} END {if (count > 0) p
  awk -F',' 'NR>1 {if ($7 > max) {max=$7; name=$2; book=$3}} END {print "\nPembaca dengan rating tertinggi:", name, "-", book, "-", max}' reading_data.csv
 ```
 <p>nanti outputnya akan seperti ini</p>
-<img src="source/Screenshot 2025-03-15 122703.png">
+<img src="https://github.com/user-attachments/assets/c5183d0c-6bfd-4e31-a4f1-a5f04dfc7f7f">
 
 <p>
   1.d) pada soal ini kita diminta untuk mencari genre buku yang paling populer setelah 2023 dan di regoin asia.
@@ -75,7 +75,7 @@ awk -F',' 'NR>1 && $5 > "2023-12-31" && $9 == "Asia" {
     }' reading_data.csv
 ```
 <p>nanti outputnya akan seperti ini</p>
-<img src="source/Screenshot 2025-03-15 123131.png">
+<img src="https://github.com/user-attachments/assets/2aa8cf78-4973-48d4-86bf-26017f083641">
 
 
 
@@ -102,7 +102,7 @@ read -s PASSWORD  # Input password secara tersembunyi
 echo ""
 ```
 <p>nanti hasil output akan seperti ini</p>
-<img src="source/Screenshot 2025-03-15 135758.png">
+<img src="https://github.com/user-attachments/assets/31e5e884-235a-4102-ab00-86fdf2d8e711">
 
 <p>
     2.b) pada soal ini kita diminta untuk membuat validasi pada email agar harus memiliki karakter @ dan . , serta validasi password 
@@ -147,7 +147,7 @@ if grep -q "^$EMAIL," "$DATABASE"; then
 fi
 ```
 <p>nanti hasil output akan seperti ini</p>
-<img src="source/Screenshot 2025-03-15 140227.png">
+<img src="https://github.com/user-attachments/assets/ee5e6d46-f2d4-4d9a-83b0-3e9b8ba9c612">
 
 <p>
     2.d) pada soal ini kita diminta untuk membuat password yang perlu disimpan dalam bentuk yang tidak mudah diakses.
@@ -170,7 +170,7 @@ CPU_MODEL=$(lscpu | grep "Model name" | awk -F ':' '{print $2}' | sed 's/^ *//')
 echo "Jenis CPU: $CPU_MODEL"
 ```
 <p>nanti hasil output akan seperti ini</p>
-<img src="source/Screenshot 2025-03-15 141349.png">
+<img src="https://github.com/user-attachments/assets/892e2dfe-7f7c-457b-b08a-abbf2e9a09e8">
 
 <p>
     2.f) pada soal ini kita diminta untuk membuat fitur pemantauan RAM dalam persen dan juga menampilkan jumlah RAM yang digunkan sekarang.
@@ -187,7 +187,7 @@ echo "Jenis CPU: $CPU_MODEL"
         echo "Persentase Penggunaan RAM: ${RAM_USAGE_PERCENT}%"
 ```
 <p>nanti hasil output akan seperti ini</p>
-<img src="source/Screenshot 2025-03-15 141730.png">
+<img src="https://github.com/user-attachments/assets/88f7713e-ec38-487d-8203-f695126752d4">
 
 <p>
     2.g) pada soal ini kita diminta untuk membuat fitur crontab, jadi nanti pemantauan CPU dan RAM nya bisa outomatis tergantung kita mau setiap berapa lama.
@@ -229,15 +229,15 @@ function view_cron_jobs() {
 </p>
 
 <p>nanti hasil output akan seperti ini</p>
-<img src="source/Screenshot 2025-03-15 142328.png">
+<img src="https://github.com/user-attachments/assets/e42608e7-1db8-43e1-88f7-50d237763c47">
 
 <p>
     2.h) nah tadi kan kita udah buat crontab, sekarang kita akan membuat file untuk menampung data cronjobnya di core.log untuk pemantauan cpu dan fragment.log untuk pemantauan ram
 </p>
 
 <p>nanti hasil output akan seperti ini</p>
-<img src="source/Screenshot 2025-03-15 142601.png">
-<img src="source/Screenshot 2025-03-15 142610.png">
+<img src="https://github.com/user-attachments/assets/a7eb2943-fbda-4ee2-a55d-8c562f841706">
+<img src="https://github.com/user-attachments/assets/b5764938-8fa8-4768-9277-714c0944c504">
 
 <p>
     2.i) pada soal ini kita diminta untuk membuat terminal yang menjadi jendela utama untuk user dan komputer(ui yang membungkus
@@ -315,8 +315,8 @@ done
 ```
 
 <p>nanti hasil output akan seperti ini</p>
-<img src="source/Screenshot 2025-03-15 142907.png">
-<img src="source/Screenshot 2025-03-15 142929.png">
+<img src="https://github.com/user-attachments/assets/e69ea1c4-b886-4a97-9c0c-fed2898fadf6">
+<img src="https://github.com/user-attachments/assets/fa9e7fbf-57c4-4cdd-a0ac-eee88e8e9460">
 
 
 
