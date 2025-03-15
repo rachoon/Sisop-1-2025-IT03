@@ -102,7 +102,7 @@ read -s PASSWORD  # Input password secara tersembunyi
 echo ""
 ```
 <p>nanti hasil output akan seperti ini</p>
-<img src="source/Screenshot 2025-03-15 135758">
+<img src="source/Screenshot 2025-03-15 135758.png">
 
 <p>
     2.b) pada soal ini kita diminta untuk membuat validasi pada email agar harus memiliki karakter @ dan . , serta validasi password 
@@ -147,7 +147,7 @@ if grep -q "^$EMAIL," "$DATABASE"; then
 fi
 ```
 <p>nanti hasil output akan seperti ini</p>
-<img src="source/Screenshot 2025-03-15 140227">
+<img src="source/Screenshot 2025-03-15 140227.png">
 
 <p>
     2.d) pada soal ini kita diminta untuk membuat password yang perlu disimpan dalam bentuk yang tidak mudah diakses.
@@ -170,7 +170,7 @@ CPU_MODEL=$(lscpu | grep "Model name" | awk -F ':' '{print $2}' | sed 's/^ *//')
 echo "Jenis CPU: $CPU_MODEL"
 ```
 <p>nanti hasil output akan seperti ini</p>
-<img src="source/Screenshot 2025-03-15 141349">
+<img src="source/Screenshot 2025-03-15 141349.png">
 
 <p>
     2.f) pada soal ini kita diminta untuk membuat fitur pemantauan RAM dalam persen dan juga menampilkan jumlah RAM yang digunkan sekarang.
@@ -187,7 +187,7 @@ echo "Jenis CPU: $CPU_MODEL"
         echo "Persentase Penggunaan RAM: ${RAM_USAGE_PERCENT}%"
 ```
 <p>nanti hasil output akan seperti ini</p>
-<img src="source/Screenshot 2025-03-15 141730">
+<img src="source/Screenshot 2025-03-15 141730.png">
 
 <p>
     2.g) pada soal ini kita diminta untuk membuat fitur crontab, jadi nanti pemantauan CPU dan RAM nya bisa outomatis tergantung kita mau setiap berapa lama.
@@ -229,15 +229,15 @@ function view_cron_jobs() {
 </p>
 
 <p>nanti hasil output akan seperti ini</p>
-<img src="source/Screenshot 2025-03-15 142328">
+<img src="source/Screenshot 2025-03-15 142328.png">
 
 <p>
     2.h) nah tadi kan kita udah buat crontab, sekarang kita akan membuat file untuk menampung data cronjobnya di core.log untuk pemantauan cpu dan fragment.log untuk pemantauan ram
 </p>
 
 <p>nanti hasil output akan seperti ini</p>
-<img src="source/Screenshot 2025-03-15 142601">
-<img src="source/Screenshot 2025-03-15 142610">
+<img src="source/Screenshot 2025-03-15 142601.png">
+<img src="source/Screenshot 2025-03-15 142610.png">
 
 <p>
     2.i) pada soal ini kita diminta untuk membuat terminal yang menjadi jendela utama untuk user dan komputer(ui yang membungkus
@@ -315,8 +315,8 @@ done
 ```
 
 <p>nanti hasil output akan seperti ini</p>
-<img src="source/Screenshot 2025-03-15 142907">
-<img src="source/Screenshot 2025-03-15 142929">
+<img src="source/Screenshot 2025-03-15 142907.png">
+<img src="source/Screenshot 2025-03-15 142929.png">
 
 
 
