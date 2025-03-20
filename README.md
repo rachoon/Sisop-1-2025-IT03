@@ -769,3 +769,28 @@ function type_filter()
     ;
    ```
    pada fungsi ```--grep```, jika input kurang dari 3, misal ```./pokemon_analysis.sh pokemon_usage.csv --grep``` maka muncul pesan ```Kata yang anda cari tidak dimasukkan. Coba lagi```, jika tidak akan menjalankan fungsi ```search_pokemon``` dengan input ```$file``` sebagai ```$1``` dan ```$3``` sebagi ```$2```.
+
+
+### Revisi Soal_4
+
+Revisi dari soal ini mencakup:
+1. Perbaikan pada ```--info```, dimana sebelumnya menampilkan data yang salah sudah diperbaiki. Untuk kodenya sebagai berikut.
+   Usage
+   ![Screenshot 2025-03-20 232918](https://github.com/user-attachments/assets/3eee5ea3-001e-4c94-a850-ce83f91faed7)
+   rawUsage
+   ![Screenshot 2025-03-20 232934](https://github.com/user-attachments/assets/2820e1cc-873f-4742-8692-47661a479a17)
+   dimana untuk filter raw, mula-mula tanda ```%``` dihilangkan terlebih dahulu, setelah disort, program akan mencetak ```%``` secara manual. Untuk rawUsage, tanda lebih dari sama dengan diganti menjadi lebih dari. Untuk outputnya seperti ini
+   
+   ![Screenshot 2025-03-21 065028](https://github.com/user-attachments/assets/1927dc13-5adf-4184-a0d7-1d3d5e7cf5c9)
+
+2. Perbaikan pada ```--sort```
+   Untuk perubahan ini dibuat agar jika pengguna memasukkan input yang tidak sesuai, maka header tidak ikut ditampilkan. Untuk kodenya sebagai berikut
+   ![Screenshot 2025-03-20 232951](https://github.com/user-attachments/assets/a7f9a24c-bba3-4666-ac3c-1524aebea1cf)
+   Untuk outputnya sebagai berikut
+   
+   Sebelum
+
+   ![Screenshot 2025-03-21 065737](https://github.com/user-attachments/assets/c76850c3-09a1-4a2a-ab55-36a62bc608aa)
+   Sesudah
+
+   ![Screenshot 2025-03-21 065659](https://github.com/user-attachments/assets/132afd72-bdb5-4c0c-941a-5f8184b30281)
