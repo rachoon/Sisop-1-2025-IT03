@@ -57,32 +57,40 @@ function show_help()
 # --info
 function show_info()
 {
+
   awk -F "," '
-  BEGIN {usage="no_usage"; usage_num=0; rawusage="now_rawusage"; rawusage_num=0} 
-  # Untuk sorting usage
-  {if ($2 >= usage_num && NR>=2) usage_num = $2; usage=$1} 
+  BEGIN {usage="no_usage"; usage_num=-1; rawusage="no_rawusage"; rawusage_num=0} 
   
-  # Untuk sorting RawUsage
-  {if ($3 >= rawusage_num && NR>=2) rawusage_num = $3; rawusage = $1} 
-  END { print " User dengan usage paling tinggi = ", usage, "dengan", usage_num,"\n", "User dengan RawUsage tertinggi =", rawusage, "dengan", rawusage_num}' $file
+  
+  {
+    usage_value = $2;
+    gsub(/%/, "", $usage_value);
+    usage_value = usage_value + 0;
+    if (usage_value > usage_num && NR>=2) {
+    usage_num = usage_value; usage = $1}
+  }
+  
+  
+  {if ($3 > rawusage_num && NR>=2) {rawusage_num = $3; rawusage = $1}} 
+  END { print " User dengan usage paling tinggi =", usage, "dengan", usage_num,"%\n", "User dengan RawUsage tertinggi =", rawusage, "dengan", rawusage_num}' $file
 }
 
 # --sort
 function show_sort()
 {
-  head -n 1 "$file"
+  # head -n 1 "$file"
   case $column in
-    ("pokemon") tail -n +2 "$file" | sort -t, -k1,1 -nr ;;
-    ("usage") tail -n +2 "$file" | sort -t, -k2,2 -nr ;;
-    ("rawusage") tail -n +2 "$file" | sort -t, -k3,3 -nr ;;
-    ("type1") tail -n +2 "$file" | sort -t, -k4,4 -nr ;;
-    ("type2") tail -n +2 "$file" | sort -t, -k5,5 -nr ;;
-    ("hp") tail -n +2 "$file" | sort -t, -k6,6 -nr ;;
-    ("atk") tail -n +2 "$file" | sort -t, -k7,7 -nr ;;
-    ("def") tail -n +2 "$file" | sort -t, -k8,8 -nr ;;
-    ("spatk") tail -n +2 "$file" | sort -t, -k9,9 -nr ;;
-    ("spdef") tail -n +2 "$file" | sort -t, -k10,10 -nr ;;
-    ("speed") tail -n +2 "$file" | sort -t, -k11,11 -nr ;;
+    ("pokemon") head -n 1 "$file" && tail -n +2 "$file" | sort -t, -k1,1 -nr;;
+    ("usage") head -n 1 "$file" && tail -n +2 "$file" | sort -t, -k2,2 -nr;;
+    ("rawusage") head -n 1 "$file" && tail -n +2 "$file" | sort -t, -k3,3 -nr;;
+    ("type1") head -n 1 "$file" && tail -n +2 "$file" | sort -t, -k4,4 -nr;;
+    ("type2") head -n 1 "$file" && tail -n +2 "$file" | sort -t, -k5,5 -nr;;
+    ("hp") head -n 1 "$file" && tail -n +2 "$file" | sort -t, -k6,6 -nr;;
+    ("atk") head -n 1 "$file" && tail -n +2 "$file" | sort -t, -k7,7 -nr;;
+    ("def") head -n 1 "$file" && tail -n +2 "$file" | sort -t, -k8,8 -nr;;
+    ("spatk") head -n 1 "$file" && tail -n +2 "$file" | sort -t, -k9,9 -nr;;
+    ("spdef") head -n 1 "$file" && tail -n +2 "$file" | sort -t, -k10,10 -nr;;
+    ("speed") head -n 1 "$file" && tail -n +2 "$file" | sort -t, -k11,11 -nr;;
     (*) echo "Input $column tidak ditemukan."
       echo "Input yang tersedia: pokemon, usage, rawusage, type1, type2, hp, atk, def, spatk, spdef, speed." ;;
   esac
@@ -93,7 +101,14 @@ function search_pokemon()
 {
   file=$1
   name=$2
-  grep -i "^$name," $file
+
+  awk -F, -v name="$name" '
+  BEGIN{ketemu = 0} 
+  {if ($1 ~ name) { print; ketemu = 1} } 
+  END { if (ketemu == 0) { print "Error: Kata", name, "tidak ditemukan." }
+  }
+  
+  ' $file
 }
 
 # jalankan program tanpa menggunakan --help
@@ -120,7 +135,7 @@ function type_filter()
 }
 
 case $command in
-  "--help")
+  "-h"|"--help")
     show_help
     ;;
   "--info")
@@ -128,7 +143,9 @@ case $command in
     ;;
   "--sort")
   if [ -z "$column" ]; then 
-      echo "Input yang anda masukkan salah" 
+      echo "Error: Input yang anda masukkan salah"
+      sleep 1
+      show_help 
       exit 1
   fi
     show_sort
@@ -136,14 +153,14 @@ case $command in
 
   "--grep")
   if [ $# -lt 3 ]; then 
-    echo "Kata yang anda cari tidak dimasukkan. Coba lagi"
+    echo "Error: Kata yang anda cari tidak dimasukkan. Coba lagi"
     exit 1
   fi
     search_pokemon $file $3
   ;;
   "--filter")
     if [ $# -lt 3 ]; then 
-    echo "Kata yang anda cari tidak dimasukkan. Coba lagi"
+    echo "Error: Kata yang anda cari tidak dimasukkan. Coba lagi"
     exit 1
   fi
   type_filter $file $3
@@ -151,7 +168,8 @@ case $command in
 
 
   *)
-    echo "Perintah $command tidak tersedia."
+    echo "Error: Perintah $command tidak tersedia."
+    sleep 1
     show_help
     exit 1
     ;;
