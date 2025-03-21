@@ -784,7 +784,7 @@ Revisi dari soal ini mencakup:
    ![Screenshot 2025-03-21 065028](https://github.com/user-attachments/assets/1927dc13-5adf-4184-a0d7-1d3d5e7cf5c9)
 
 2. Perbaikan pada ```--sort```
-   Untuk perubahan ini dibuat agar jika pengguna memasukkan input yang tidak sesuai, maka header tidak ikut ditampilkan. Untuk kodenya sebagai berikut
+   Perbaikan ini dibuat agar jika pengguna memasukkan input yang tidak sesuai, maka header tidak ikut ditampilkan. Untuk kodenya sebagai berikut
    ![Screenshot 2025-03-20 232951](https://github.com/user-attachments/assets/a7f9a24c-bba3-4666-ac3c-1524aebea1cf)
    Untuk outputnya sebagai berikut
    
@@ -794,3 +794,11 @@ Revisi dari soal ini mencakup:
    Sesudah
 
    ![Screenshot 2025-03-21 065659](https://github.com/user-attachments/assets/132afd72-bdb5-4c0c-941a-5f8184b30281)
+
+3. Perbaikan pada ```--grep```
+   Untuk perbaikan ini, terdapat perubahan sistem ```--grep```, dimana sebelumnya menggunakan sort secara langsung, sehingga perbaikan ini menggunakan awk dan sorting berdasarkan kolom usage. Untuk kodenya seperti ini
+   
+   ![Black and Green Circle Gradient Sass Startup Pricing Plan Presentation](https://github.com/user-attachments/assets/dec824a2-5a5a-41ba-96cf-3b33206798ed)
+   Untuk ouputnya seperti ini
+   
+   ![Screenshot 2025-03-21 070616](https://github.com/user-attachments/assets/a8d65339-cbb7-4a2c-98ca-4697c1536b0a)
