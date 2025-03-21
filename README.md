@@ -605,6 +605,11 @@ done
 ```
 Dimana setiap input yang kita masukkan akan masuk ke salah satu list sesuai input. Contoh: ```./dsotm.sh --play="Speak to Me"```. Jika input yang dijalankan berbeda dari kode di atas, maka muncul teks ```Program tidak dikenal: $arg``` dimana ```$arg``` merupakan argumen yang di-input oleh user.
 
+### Revisi Soal_3
+
+Perbaikan pada soal ini ada pada fungsi ```On the Run```, dimana sebelumnya loading progress tidak responsif menjadi responsif.
+
+
 ## Soal_4
 
 ### A. Variabel Input
