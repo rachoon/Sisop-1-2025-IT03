@@ -108,7 +108,7 @@ function search_pokemon()
   END { if (ketemu == 0) { print "Error: Kata", name, "tidak ditemukan." }
   }
   
-  ' $file
+  ' $file | sort -t, -k2,2
 }
 
 # jalankan program tanpa menggunakan --help
