@@ -44,11 +44,12 @@ on_the_run() {
     GREEN='\033[0;32m'
     NC='\033[0m' # Reset warna
 
-    BAR_LENGTH=30
+    
     PROGRESS=0
 
     # menampilkan progress bar
     draw_progress_bar() {
+        BAR_LENGTH=$(tput cols)-8
         local filled=$((PROGRESS * BAR_LENGTH / 100))
         local empty=$((BAR_LENGTH - filled))
 
@@ -83,6 +84,7 @@ on_the_run() {
 
         # Random delay (0.1 - 1 detik)
         sleep 0.$((RANDOM % 10))
+        clear
 
         # Increment progress (acak antara 1-10)
         PROGRESS=$((PROGRESS + RANDOM % 10))
@@ -104,7 +106,6 @@ on_the_run() {
 # Fungsi untuk menjalankan program "Time and Date"
 Time() {
     echo "Menjalankan Time..."
-
     clear
 
     while true; do
