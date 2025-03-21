@@ -577,7 +577,8 @@ fi
 Untuk outputnya sebagai berikut.
 ![Image](https://github.com/user-attachments/assets/3805dd50-8c4b-470a-92f2-13d31f1a1354)
 
-G. Argumen Utama
+### G. Argumen Utama
+
 Untuk fungsi ini, kode diperlukan sebagai berikut/
 ```
 for arg in "$@"; do
@@ -607,7 +608,83 @@ Dimana setiap input yang kita masukkan akan masuk ke salah satu list sesuai inpu
 
 ### Revisi Soal_3
 
-Perbaikan pada soal ini ada pada fungsi ```On the Run```, dimana sebelumnya loading progress tidak responsif menjadi responsif.
+Perbaikan pada soal ini ada pada fungsi ```On the Run```, dimana sebelumnya loading progress tidak responsif menjadi responsif. Untuk kodenya seperti ini
+
+```
+on_the_run() {
+    echo "Menjalankan On the Run..."
+
+    clear
+
+    GREEN='\033[0;32m'
+    NC='\033[0m' # Reset warna
+
+    
+    PROGRESS=0
+
+    # menampilkan progress bar
+    draw_progress_bar() {
+        BAR_LENGTH=$(tput cols)-8
+        local filled=$((PROGRESS * BAR_LENGTH / 100))
+        local empty=$((BAR_LENGTH - filled))
+
+        BAR="["
+        for ((i = 0; i < filled; i++)); do
+            BAR+="${GREEN}#${NC}"
+        done
+        for ((i = 0; i < empty; i++)); do
+            BAR+=" "
+        done
+        BAR+="]"
+
+        echo -ne "\r${BAR} ${PROGRESS}%"
+    }
+
+    # Loop utama
+    while [ $PROGRESS -lt 100 ]; do
+        # Tampilkan progress bar
+        draw_progress_bar
+
+        # Tentukan pesan status
+        if [ $PROGRESS -lt 50 ]; then
+            MESSAGE="sabar wir"
+        elif [ $PROGRESS -lt 100 ]; then
+            MESSAGE="dikit lagi bre"
+        else
+            MESSAGE="done yagesyaaaaa"
+        fi
+
+        tput el  # Hapus baris sebelumnya
+        echo -e "\n${MESSAGE}"
+
+        # Random delay (0.1 - 1 detik)
+        sleep 0.$((RANDOM % 10))
+        clear
+
+        # Increment progress (acak antara 1-10)
+        PROGRESS=$((PROGRESS + RANDOM % 10))
+        if [ $PROGRESS -gt 100 ]; then
+            PROGRESS=100
+        fi
+
+        # Geser kursor ke atas untuk menimpa pesan status sebelumnya
+        tput cuu 2
+    done
+
+    # Tampilkan progress bar dan pesan final saat selesai
+    draw_progress_bar
+    tput el  # Hapus baris sebelumnya
+    MESSAGE="done yagesyaaaaa"  # Pastikan pesan status diperbarui
+    echo -e "\n${GREEN}${MESSAGE}${NC}"
+}
+```
+
+Untuk outputnya seperti ini
+
+
+
+https://github.com/user-attachments/assets/86640620-8942-4b2c-b200-fb3e5333465c
+
 
 
 ## Soal_4
